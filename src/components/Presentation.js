@@ -5,7 +5,7 @@ class Presentation extends Component {
         return(
             <div id="presentation">
                 <div id="presentation-text">
-                    <h1 id="greeting">Hello</h1>
+                    <h1>Hello</h1>
                     <p>
                         <span id="name-code">
                             I'm <em>Luis</em>,<br/>

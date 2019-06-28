@@ -13,7 +13,8 @@ body::selection {
 body #container {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "header" "presentation";
+      grid-template-areas: "header" "presentation" "about-me" "my-works";
+  width: 100%;
 }
 
 body #container #header {
@@ -47,18 +48,16 @@ body #container #header #header-content {
 }
 
 body #container #header #header-content #logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: inherit;
   width: 20%;
-  height: 100%;
+  height: inherit;
   margin: 30px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: inherit;
+      -ms-flex-align: inherit;
+          align-items: inherit;
   text-align: center;
   background-color: #e1e155;
   color: #000000;
@@ -108,6 +107,7 @@ body #container #header #header-content ul li#active span:hover {
 }
 
 body #container #header #progress-bar {
+  z-index: 11;
   width: 100%;
   height: 5px;
 }
@@ -116,7 +116,7 @@ body #container #header #progress-bar #progress-fill {
   height: 100%;
   width: 0;
   border-radius: 3px;
-  background-color: #3c4ef2;
+  background-color: white;
 }
 
 body #container #presentation {
@@ -138,7 +138,7 @@ body #container #presentation {
 }
 
 body #container #presentation #presentation-text {
-  position: relative;
+  position: inherit;
   font-family: Montserrat;
   text-align: center;
   font-size: 50px;
@@ -147,8 +147,11 @@ body #container #presentation #presentation-text {
   line-height: 70px;
 }
 
-body #container #presentation #presentation-text #greeting {
-  position: relative;
+body #container #presentation #presentation-text h1, body #container #presentation #presentation-text #name-code, body #container #presentation #presentation-text #available, body #container #presentation #presentation-text::after {
+  position: inherit;
+}
+
+body #container #presentation #presentation-text h1 {
   font-size: 120px;
   margin: 10px;
   margin-bottom: 50px;
@@ -185,7 +188,6 @@ body #container #presentation #presentation-text #greeting {
 }
 
 body #container #presentation #presentation-text #name-code {
-  position: relative;
   -webkit-animation: fade-in-right 1s ease-out 1.5s backwards;
           animation: fade-in-right 1s ease-out 1.5s backwards;
 }
@@ -212,14 +214,14 @@ body #container #presentation #presentation-text #name-code {
   }
 }
 
-body #container #presentation #presentation-text #code {
+body #container #presentation #presentation-text #name-code #code {
   background-color: black;
   color: #24f312;
   font-family: "Source Code Pro";
   padding: 3px 10px;
 }
 
-body #container #presentation #presentation-text #code::after {
+body #container #presentation #presentation-text #name-code #code::after {
   content: '_';
   position: relative;
   bottom: 6px;
@@ -246,22 +248,21 @@ body #container #presentation #presentation-text #code::after {
   }
 }
 
-body #container #presentation #presentation-text #code:hover {
+body #container #presentation #presentation-text #name-code #code:hover {
   cursor: default;
 }
 
-body #container #presentation #presentation-text #code::-moz-selection {
+body #container #presentation #presentation-text #name-code #code::-moz-selection {
   color: #24f312;
   background-color: transparent;
 }
 
-body #container #presentation #presentation-text #code::selection {
+body #container #presentation #presentation-text #name-code #code::selection {
   color: #24f312;
   background-color: transparent;
 }
 
 body #container #presentation #presentation-text #available {
-  position: relative;
   color: #f0f023;
   -webkit-animation: fade-in-down 600ms ease-out 2.5s backwards;
           animation: fade-in-down 600ms ease-out 2.5s backwards;
@@ -290,8 +291,7 @@ body #container #presentation #presentation-text #available {
 }
 
 body #container #presentation #presentation-text::after {
-  content: url(ScrollIndicator.png);
-  position: relative;
+  content: url(ScrollIndicator.svg);
   top: 15px;
   -webkit-animation: fade-in 500ms ease-in 2.8s backwards, up-and-down 1.2s ease-in-out 2.9s infinite;
           animation: fade-in 500ms ease-in 2.8s backwards, up-and-down 1.2s ease-in-out 2.9s infinite;
@@ -331,5 +331,75 @@ body #container #presentation #presentation-text::after {
   50% {
     top: 35px;
   }
+}
+
+body #container #about-me {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: about-me;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body #container #about-me p {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+  text-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.8);
+  width: 400px;
+}
+
+body #container #about-me .circle {
+  margin: 75px;
+}
+
+body #container #about-me #knowledge-board {
+  display: inherit;
+  -webkit-box-orient: inherit;
+  -webkit-box-direction: inherit;
+      -ms-flex-direction: inherit;
+          flex-direction: inherit;
+  -webkit-box-align: inherit;
+      -ms-flex-align: inherit;
+          align-items: inherit;
+  background-color: #3d4bcf;
+  width: 700px;
+  height: 220px;
+  border-radius: 50px;
+  -webkit-box-shadow: 6px 8px 6px rgba(0, 0, 0, 0.25);
+          box-shadow: 6px 8px 6px rgba(0, 0, 0, 0.25);
+}
+
+body #container #about-me #knowledge-board h1, body #container #about-me #knowledge-board p {
+  text-align: center;
+  color: white;
+}
+
+body #container #about-me #knowledge-board p {
+  width: 600px;
+  font-size: 22px;
+}
+
+body #container #about-me #triangle {
+  margin-top: 50px;
+}
+
+body #container #my-works {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: my-works;
+  width: 100%;
+  height: 800px;
+  background-image: url(PresentationBG-r.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 /*# sourceMappingURL=App.css.map */

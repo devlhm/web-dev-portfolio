@@ -3,6 +3,7 @@ $colorPallete: (
     'logo-yellow': #e1e155,
     'available-yellow': #f0f023,
     'progress-blue': #3c4ef2,
+    'board-blue': #3d4bcf,
     'code-green': #24f312,
     'background-grey': #373737
 );
@@ -18,7 +19,11 @@ body {
         display: grid;
         grid-template-areas:
             "header"
-            "presentation";
+            "presentation"
+            "about-me"
+            "my-works";
+
+        width: 100%;
 
         #header {
             grid-area: header;
@@ -40,12 +45,12 @@ body {
                 box-shadow: 0 4px 6px rgba(0, 0, 0, .25);
 
                 #logo {
-                    display: flex;
+                    display: inherit;
                     width: 20%;
-                    height: 100%;
+                    height: inherit;
                     margin: 30px;
-                    align-items: center;
                     justify-content: center;
+                    align-items: inherit;
                     text-align: center;
                     background-color: map-get($colorPallete, "logo-yellow");
                     color: #000000;
@@ -93,6 +98,7 @@ body {
             }
 
             #progress-bar {
+                z-index: 11;
                 width: 100%;
                 height: 5px;
 
@@ -102,7 +108,7 @@ body {
 
                     border-radius: 3px;
 
-                    background-color: map-get($colorPallete, "progress-blue");
+                    background-color: white;
                 }
             }
         }
@@ -123,7 +129,7 @@ body {
             background-repeat: no-repeat;
 
             #presentation-text {
-                position: relative;
+                position: inherit;
                 font-family: Montserrat;
                 text-align: center;
                 font-size: 50px;
@@ -134,9 +140,11 @@ body {
 
                 line-height: 70px;
 
-                #greeting {
-                    position: relative;
+                h1, #name-code, #available, &::after {
+                    position: inherit;
+                }
 
+                h1 {
                     font-size: 120px;
 
                     margin: 10px;
@@ -162,7 +170,6 @@ body {
                 }
 
                 #name-code {
-                    position: relative;
                     animation: fade-in-right 1s ease-out 1.5s backwards;
 
                     @keyframes fade-in-right {
@@ -176,45 +183,45 @@ body {
                             opacity: 1;
                         }
                     }
-                }
 
-                #code {
-                    background-color: black;
-                    color: map-get($colorPallete, "code-green");
-                    font-family: "Source Code Pro";
-                    padding: 3px 10px;
-
-                    &::after {
-                        content: '_';
-                        position: relative;
-                        bottom: 6px;
-                        padding: 3px 0px;
-                        animation: intermitance 1s step-end 100ms infinite backwards;
-
-                        @keyframes intermitance {
-                            from, to {
-                                opacity: 1;
-                            }
-                    
-                            50% {
-                                opacity: 0;
+                    #code {
+                        background-color: black;
+                        color: map-get($colorPallete, "code-green");
+                        font-family: "Source Code Pro";
+                        padding: 3px 10px;
+    
+                        &::after {
+                            content: '_';
+                            position: relative;
+                            bottom: 6px;
+                            padding: 3px 0px;
+                            animation: intermitance 1s step-end 100ms infinite backwards;
+    
+                            @keyframes intermitance {
+                                from, to {
+                                    opacity: 1;
+                                }
+                        
+                                50% {
+                                    opacity: 0;
+                                }
                             }
                         }
-                    }
-
-                    &:hover {
-                        cursor: default;
-                    }
-
-                    &::selection {
-                        color: map-get($colorPallete, "code-green");
-                        background-color: transparent;
+    
+                        &:hover {
+                            cursor: default;
+                        }
+    
+                        &::selection {
+                            color: map-get($colorPallete, "code-green");
+                            background-color: transparent;
+                        }
                     }
                 }
 
-                #available {
-                    position: relative;
+                
 
+                #available {
                     color: map-get($colorPallete, "available-yellow");
 
                     animation: fade-in-down 600ms ease-out 2.5s backwards;
@@ -233,9 +240,8 @@ body {
                 }
 
                 &::after {
-                    content: url(ScrollIndicator.png);
+                    content: url(ScrollIndicator.svg);
 
-                    position: relative;
                     top: 15px;
 
                     animation:
@@ -262,7 +268,63 @@ body {
                         }
                     }
                 }
+            }            
+        }
+
+        #about-me {
+            grid-area: about-me;
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            p {
+                text-align: center;
+                color: rgba(255, 255, 255, .8);
+                font-size: 20px;
+                text-shadow: 0px 0px 5px 3px rgba(0, 0, 0, .8);
+                width: 400px;
             }
+
+            .circle {
+                margin: 75px;
+                // box-shadow: 2px 4px 4px rgba(0, 0, 0, .25);
+            }
+
+            #knowledge-board {
+                display: inherit;
+                flex-direction: inherit;
+                align-items: inherit;
+
+                background-color: map-get($colorPallete, "board-blue");
+                width: 700px;
+                height: 220px;
+                border-radius: 50px;
+                box-shadow: 6px 8px 6px rgba(0, 0, 0, .25);
+
+                h1, p {
+                    text-align: center;
+                    color: white;            
+                }
+
+                p {
+                    width: 600px;
+                    font-size: 22px;                    
+                }
+            }
+
+            #triangle {
+                margin-top: 50px;
+            }
+        }
+
+        #my-works {
+            grid-area: my-works;
+            width: 100%;
+            height: 800px;
+            background-image: url(PresentationBG-r.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
         }
     }    
 }
